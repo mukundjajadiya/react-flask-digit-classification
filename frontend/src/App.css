@@ -1,0 +1,86 @@
+/** @format */
+
+.App {
+	font-family: sans-serif;
+	text-align: center;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+p {
+	margin: 2rem auto;
+}
+.number_heading{
+	background-color: rgba(70, 37, 161,0.8);
+	color: rgb(255, 255, 255);
+	width: 500px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 5px;
+	padding: 10px;
+	border-radius: 5px;
+	font-family: 'Gill Sans', 'Trebuchet MS', sans-serif;
+}
+.canvas{
+	border-radius: 10px;
+}
+.btn_group_div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.btn_group_div > Button {
+	margin: 10px 10px;
+	width: 240px;
+}
+.btn_clear{
+	background-color: rgba(230, 226, 7,0.7) !important;
+	color: rgb(48, 10, 45) !important;
+	font-size: 20px;
+	font-weight: bold;
+	border-radius: 5px;
+	border: none !important;
+}
+.btn_clear:hover{
+	color: rgb(230, 226, 7) !important;
+	background-color:  rgba(48, 10, 45,0.7) !important;
+	border: none;
+}
+.btn_predict{
+	background-color: rgba(11, 236, 79, 0.7) !important;
+	color: rgb(37, 10, 48) !important;
+	font-size: 20px;
+	font-weight: bold;
+	border-radius: 5px;
+	border: none !important;
+}
+.btn_predict:hover{
+	color: rgb(11, 236, 79) !important;
+	background-color : rgba(37, 10, 48, 0.7) !important;
+	border: none !important;
+
+}
+
+.prediction_div {
+	background-color: rgba(70, 37, 161, 0.9) !important;
+	color: white !important;
+	width: 500px;
+	font-size:20px;
+	line-height: 50px;
+	border-radius: 5px
+}
+.alert{
+	width: 500px;
+	margin: 5px 0 0 5px;
+	height: 50px;
+	background-color: rgba(0, 255, 100, 0.5) !important;
+	color: rgb(19, 8, 34) !important;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+}
