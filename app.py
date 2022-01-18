@@ -1,7 +1,6 @@
 import os
 from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
-from flask.helpers import send_from_directory
 import numpy as np
 from cv2 import imdecode, IMREAD_COLOR
 import base64
@@ -10,7 +9,7 @@ import base64
 # import custom module
 from model import MNISTModel
 
-app = Flask(__name__, static_folder="frontend/build", static_url_path="/")
+app = Flask(__name__, static_folder="./frontend/build", static_url_path="/")
 CORS(app)
 try:
     model_path = os.path.join("model", "mnist_cnn_model.h5")
@@ -22,7 +21,7 @@ except Exception as e:
 @app.route("/", methods=["GET"])
 @cross_origin()
 def index():
-    return send_from_directory(app.static_folder, "index.html")
+    return app.send_static_file("index.html")
 
 @app.route('/hello', methods=['GET', 'POST'])
 @cross_origin()
