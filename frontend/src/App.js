@@ -26,12 +26,10 @@ const App = () => {
 	const sendData = (d) => {
 		const formData = new FormData();
 		const URL = "https://hand-digit-classification.herokuapp.com/upload";
-		const headers = {
-			"Content-Type": "application/json",
-		};
+
 		formData.append("file", d);
 
-		axios.post(URL, formData, headers=headers).then((res) => {
+		axios.post(URL, formData).then((res) => {
 			console.log(res.data);
 			setPrediction(res.data["prediction"]);
 			setSend(true);
