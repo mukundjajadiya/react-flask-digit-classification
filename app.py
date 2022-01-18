@@ -1,5 +1,7 @@
 import os
 from flask import Flask, jsonify, request
+from flask_cors import CORS, cross_origin
+from flask.helpers import send_from_directory
 import numpy as np
 from cv2 import imdecode, IMREAD_COLOR
 import base64
@@ -8,8 +10,8 @@ import base64
 # import custom module
 from model import MNISTModel
 
-app = Flask(__name__)
-
+app = Flask(__name__, static_folder="frontend/build", static_url_path="/")
+CORS(app)
 try:
     model_path = os.path.join("model", "mnist_cnn_model.h5")
     mnist_model = MNISTModel(model_path)
@@ -17,15 +19,24 @@ try:
 except Exception as e:
     print(f"[ERROR] {e}")
 
+@app.route("/", methods=["GET"])
+@cross_origin()
+def index():
+    return send_from_directory(app.static_folder, "index.html")
 
 @app.route('/hello', methods=['GET', 'POST'])
+@cross_origin()
 def welcome():
-    response = jsonify({"get": "Hello, world!"})
+    if request.method == "GET":
+        response = jsonify({"get": "Hello, world!"})
+    if request.method == "POST":
+        response = jsonify({"post": "Hello, world!"})
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
 
 
 @app.route("/upload", methods=["POST"])
+@cross_origin()
 def upload():
     global mnist_model
 
@@ -49,4 +60,4 @@ def upload():
 
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run()
