@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useRef, useState} from "react";
+import React, { useRef, useState } from "react";
 import CanvasDraw from "react-canvas-draw";
 import { Alert, Button } from "react-bootstrap";
 import axios from "axios";
@@ -19,15 +19,20 @@ const App = () => {
 
 	const handleClear = () => {
 		sketch.current.eraseAll();
-		setPrediction("")
-		setSend(false)
+		setPrediction("");
+		setSend(false);
 	};
 
 	const sendData = (d) => {
 		const formData = new FormData();
 		const URL = "https://hand-digit-classification.herokuapp.com/upload";
-
-		formData.append("file", d);
+		const headers = {
+			Accept: "application/json",
+			"Content-Type": "application/json",
+			"User-Agent":
+				"Mozilla/5.0 (iPad; CPU OS 11_0 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) Version/11.0 Mobile/15A5341f Safari/604.1",
+		};
+		formData.append("file", d, { headers = headers });
 
 		axios.post(URL, formData).then((res) => {
 			console.log(res.data);
@@ -38,11 +43,14 @@ const App = () => {
 	return (
 		<div className="App">
 			{send && (
-				<Alert className="alert" variant="info">Image successfully send to classification</Alert>
+				<Alert className="alert" variant="info">
+					Image successfully send to classification
+				</Alert>
 			)}
 			<h2 className="number_heading">Draw 0 to 9 number</h2>
 
-			<CanvasDraw className="canvas"
+			<CanvasDraw
+				className="canvas"
 				ref={sketch}
 				style={{
 					boxShadow:
@@ -57,14 +65,14 @@ const App = () => {
 			/>
 
 			<div className="btn_group_div">
-				<Button className="btn_predict" onClick={handleSubmit} >
+				<Button className="btn_predict" onClick={handleSubmit}>
 					Predict
 				</Button>
-				<Button className="btn_clear" onClick={handleClear} >
+				<Button className="btn_clear" onClick={handleClear}>
 					Clear
 				</Button>
 			</div>
-			{send && <div className="prediction_div">Prediction :  {prediction}</div>}
+			{send && <div className="prediction_div">Prediction : {prediction}</div>}
 		</div>
 	);
 };
