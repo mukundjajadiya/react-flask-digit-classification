@@ -3,7 +3,6 @@
 # dependencies
 node_modules
 env
-__pycache__
 /.pnp
 .pnp.js
 
@@ -11,7 +10,7 @@ __pycache__
 /coverage
 
 # production
-/build
+# /build
 
 # misc
 .DS_Store
