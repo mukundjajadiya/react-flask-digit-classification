@@ -25,7 +25,7 @@ const App = () => {
 
 	const sendData = (d) => {
 		const formData = new FormData();
-		const URL = "http://127.0.0.1:5000/upload";
+		const URL = "https://hand-digit-classification.herokuapp.com/upload";
 
 		formData.append("file", d);
 
