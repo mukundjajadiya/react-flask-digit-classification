@@ -18,10 +18,12 @@ try:
 except Exception as e:
     print(f"[ERROR] {e}")
 
+
 @app.route("/", methods=["GET"])
 @cross_origin()
 def index():
     return app.send_static_file("index.html")
+
 
 @app.route('/hello', methods=['GET', 'POST'])
 @cross_origin()
@@ -50,6 +52,8 @@ def upload():
         msg["prediction"] = str(prediction)
         response = jsonify(msg)
         response.headers["Access-Control-Allow-Origin"] = "*"
+        print(f"[INFO] Prediction (result: {prediction}) response send to client successfully.")
+
         return response
 
     except Exception as e:
