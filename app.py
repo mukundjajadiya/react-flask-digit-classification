@@ -14,7 +14,7 @@ CORS(app)
 try:
     model_path = os.path.join("model", "mnist_cnn_model.h5")
     mnist_model = MNISTModel(model_path)
-    print(mnist_model)
+
 except Exception as e:
     print(f"[ERROR] {e}")
 
@@ -63,4 +63,4 @@ def upload():
 
 
 if __name__ == '__main__':
-    app.run(threaded=True, debug=False, host= "0.0.0.0", port=5000)
+    app.run(threaded=True, debug=False, host= "0.0.0.0")
