@@ -11,7 +11,7 @@ const App = () => {
 	const sketch = useRef();
 	const [send, setSend] = useState(false);
 	const [prediction, setPrediction] = useState("");
-	const  [data, setData] = useState("")
+	const [data, setData] = useState("");
 
 	const handleSubmit = () => {
 		const canvas = sketch.current.getDataURL();
@@ -33,7 +33,7 @@ const App = () => {
 		axios.post(URL, formData).then((res) => {
 			console.log(res.data);
 			setPrediction(res.data["prediction"]);
-			setData(res.data)
+			setData(res.data);
 			setSend(true);
 		});
 	};
@@ -70,7 +70,8 @@ const App = () => {
 				</Button>
 			</div>
 			{send && <div className="prediction_div">Prediction : {prediction}</div>}
-			<div>response: {data}</div>
+
+			{send && <div>response: {data}</div>}
 		</div>
 	);
 };
