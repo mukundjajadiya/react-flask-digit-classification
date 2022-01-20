@@ -1,4 +1,5 @@
 import os
+from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
 import numpy as np
@@ -65,4 +66,6 @@ def upload():
 
 
 if __name__ == '__main__':
-    app.run(threaded=True, debug=False, host="0.0.0.0", port=7777)
+    load_dotenv()
+    port = int(os.getenv("PORT"))
+    app.run(host="0.0.0.0", port=port, threaded=True)
