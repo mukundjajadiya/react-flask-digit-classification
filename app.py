@@ -67,5 +67,5 @@ def upload():
 
 if __name__ == '__main__':
     load_dotenv()
-    port = int(os.getenv("PORT"))
+    port = int(os.environ.get("PORT", 7777))
     app.run(host="0.0.0.0", port=port, threaded=True)
