@@ -53,7 +53,8 @@ def upload():
         msg["prediction"] = str(prediction)
         response = jsonify(msg)
         response.headers["Access-Control-Allow-Origin"] = "*"
-        print(f"[INFO] Prediction (result: {prediction}) response send to client successfully.")
+        print(
+            f"[INFO] Prediction (result: {prediction}) response send to client successfully.")
 
         return response
 
@@ -64,4 +65,4 @@ def upload():
 
 
 if __name__ == '__main__':
-    app.run(threaded=True, debug=False, host= "0.0.0.0")
+    app.run(threaded=True, debug=False, host="0.0.0.0", port=7777)
