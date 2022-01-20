@@ -12,7 +12,8 @@ from model import MNISTModel
 app = Flask(__name__, static_folder="./frontend/build", static_url_path="/")
 CORS(app)
 try:
-    model_path = os.path.join("model", "mnist_cnn_model.h5")
+    # model_path = os.path.join("model", "mnist_cnn_model.h5")
+    model_path = os.path.join("model", "minst_digit_classification.h5")
     mnist_model = MNISTModel(model_path)
 
 except Exception as e:
