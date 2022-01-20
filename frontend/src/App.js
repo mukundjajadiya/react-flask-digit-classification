@@ -55,7 +55,7 @@ const App = () => {
 				canvasHeight={500}
 				brushColor="white"
 				backgroundColor="black"
-				brushRadius={20}
+				brushRadius={10}
 				hideGrid={true}
 			/>
 
