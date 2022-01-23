@@ -2,8 +2,10 @@
 
 import React, { useRef, useState } from "react";
 import CanvasDraw from "react-canvas-draw";
-import { Alert, Button } from "react-bootstrap";
+import DialogContent from "@material-ui/core/DialogContent";
+import Dialog from "@material-ui/core/Dialog";
 import axios from "axios";
+import greenTick from "./img/green-tick2.png";
 
 import "./App.css";
 
@@ -11,6 +13,7 @@ const App = () => {
 	const sketch = useRef();
 	const [send, setSend] = useState(false);
 	const [prediction, setPrediction] = useState("");
+	const [open, setOpen] = React.useState(false);
 
 	const handleSubmit = () => {
 		const canvas = sketch.current.getDataURL();
@@ -23,9 +26,18 @@ const App = () => {
 		setSend(false);
 	};
 
+	const handleClickOpen = () => {
+		setOpen(true);
+	};
+
+	const handleClose = () => {
+		setOpen(false);
+	};
+
 	const sendData = (d) => {
 		const formData = new FormData();
 		const URL = "https://hand-digit-classification.herokuapp.com/upload";
+		// const URL = "http://192.168.0.127:5000/upload";
 
 		formData.append("file", d);
 
@@ -33,16 +45,35 @@ const App = () => {
 			console.log(res.data);
 			setPrediction(res.data["prediction"]);
 			setSend(true);
+			handleClickOpen();
 		});
 	};
+
 	return (
 		<div className="App">
 			{send && (
-				<Alert className="alert" variant="info">
-					Image successfully send to classification
-				</Alert>
+				<Dialog open={open} onClose={handleClose}>
+					<DialogContent>
+						<div className="inner_alert">
+							<img
+								className="alert_green_tick_img"
+								src={greenTick}
+								alt="success img"
+							/>
+							<h3 className="alert_heading">
+								Image send to classification successfully.
+							</h3>
+							<p className="alert_prediction">
+								Image classified as : {prediction}
+							</p>
+							<button className="my_button alert_btn" onClick={handleClose}>
+								Close
+							</button>
+						</div>
+					</DialogContent>
+				</Dialog>
 			)}
-			<h2 className="number_heading">Draw 0 to 9 number</h2>
+			<h2 className="heading">Draw 0 to 9 number</h2>
 
 			<CanvasDraw
 				className="canvas"
@@ -55,19 +86,22 @@ const App = () => {
 				canvasHeight={500}
 				brushColor="white"
 				backgroundColor="black"
-				brushRadius={18}
+				brushRadius={22}
 				hideGrid={true}
+				lazyRadius={0}
+				immediateLoading={true}
 			/>
 
-			<div className="btn_group_div">
-				<Button className="btn_predict" onClick={handleSubmit}>
+			{send && sketch.current.eraseAll()}
+
+			<div className="btn_group_div ">
+				<button className="my_button" onClick={handleSubmit}>
 					Predict
-				</Button>
-				<Button className="btn_clear" onClick={handleClear}>
+				</button>
+				<button className="my_button" onClick={handleClear}>
 					Clear
-				</Button>
+				</button>
 			</div>
-			{send && <div className="prediction_div">Prediction : {prediction}</div>}
 		</div>
 	);
 };

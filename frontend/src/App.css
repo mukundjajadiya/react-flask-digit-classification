@@ -1,9 +1,16 @@
 /** @format */
+@import url("https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap");
+* {
+	margin: 0;
+	padding: 0;
+}
+*:focus {
+	outline: none;
+}
 
 .App {
-	font-family: sans-serif;
+	font-family: "Gothic A1" !important;
 	text-align: center;
-
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -13,19 +20,29 @@
 p {
 	margin: 2rem auto;
 }
-.number_heading{
-	background-color: rgba(70, 37, 161,0.8);
-	color: rgb(255, 255, 255);
+.heading {
 	width: 500px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin-top: 5px;
-	padding: 10px;
-	border-radius: 5px;
-	font-family: 'Gill Sans', 'Trebuchet MS', sans-serif;
+	margin: 10px 0;
+	appearance: none;
+	background-color: #FFFFFF;
+	box-shadow: rgba(0, 0, 0,0.4) 0 -12px 6px inset;
+	border-radius: 0.4em;
+	border-style: none;
+	box-sizing: border-box;
+	color: #000000;
+	display: inline-block;
+	font-size: 2rem;
+	font-weight: bold;
+	letter-spacing: -0.24px;
+	padding: 1rem 1.3rem;
+	quotes: auto;
+	text-align: center;
+	transition: all 0.15s;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
 }
-.canvas{
+.canvas {
 	border-radius: 10px;
 }
 .btn_group_div {
@@ -38,43 +55,35 @@ p {
 	margin: 10px 10px;
 	width: 240px;
 }
-.btn_clear{
-	background-color: rgba(230, 226, 7,0.7) !important;
+.btn_clear {
+	background-color: rgba(230, 226, 7, 0.7) !important;
 	color: rgb(48, 10, 45) !important;
 	font-size: 20px;
 	font-weight: bold;
 	border-radius: 5px;
 	border: none !important;
+	box-shadow: none !important;
 }
-.btn_clear:hover{
+.btn_clear:hover {
 	color: rgb(230, 226, 7) !important;
-	background-color:  rgba(48, 10, 45,0.7) !important;
+	background-color: rgba(48, 10, 45, 0.7) !important;
 	border: none;
 }
-.btn_predict{
+.btn_predict {
 	background-color: rgba(11, 236, 79, 0.7) !important;
 	color: rgb(37, 10, 48) !important;
 	font-size: 20px;
 	font-weight: bold;
 	border-radius: 5px;
+	box-shadow: none !important;
 	border: none !important;
 }
-.btn_predict:hover{
+.btn_predict:hover {
 	color: rgb(11, 236, 79) !important;
-	background-color : rgba(37, 10, 48, 0.7) !important;
-	border: none !important;
-
+	background-color: rgba(37, 10, 48, 0.7) !important;
 }
 
-.prediction_div {
-	background-color: rgba(70, 37, 161, 0.9) !important;
-	color: white !important;
-	width: 500px;
-	font-size:20px;
-	line-height: 50px;
-	border-radius: 5px
-}
-.alert{
+.alert {
 	width: 500px;
 	margin: 5px 0 0 5px;
 	height: 50px;
@@ -83,4 +92,99 @@ p {
 	align-items: center;
 	justify-content: center;
 	display: flex;
+}
+
+.inner_alert {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+}
+
+.alert_green_tick_img {
+	width: 50px;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+}
+
+.alert_heading {
+	font-size: 20px;
+	color: rgb(47, 255, 47);
+	width: 100%;
+	margin-top: 10px;
+	border-radius: 5px;
+}
+
+.alert_prediction {
+	width: 100%;
+	margin: 10px;
+}
+
+.alert_btn {
+	margin: 20px !important;
+}
+
+.my_button {
+	appearance: none;
+	background-color: #ffffff;
+	border-radius: 0.4em;
+	border-style: none;
+	box-shadow: rgba(0, 0, 0,0.4) 0 -12px 6px inset;	box-sizing: border-box;
+	color: #000000;
+	cursor: pointer;
+	display: inline-block;
+	font-family: -apple-system, sans-serif;
+	font-size: 1.2rem;
+	font-weight: 700;
+	letter-spacing: -0.24px;
+	margin: 0;
+	outline: none;
+	padding: 1rem 1.3rem;
+	quotes: auto;
+	text-align: center;
+	text-decoration: none;
+	transition: all 0.15s;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+}
+
+.my_button:hover {
+	background-color: rgba(255, 194, 41,0.7);
+	box-shadow: rgba(252, 97, 20, 0.7) 0 -6px 8px inset;
+	transform: scale(1);
+}
+
+.my_button:active {
+	transform: scale(1.05);
+}
+
+@media (min-width: 650px) {
+	.my_button {
+		font-size: 1.5rem;
+		padding: 0.75rem 2rem;
+	}
+}
+
+@media (max-width:651px){
+	.heading{
+		width: 350px;
+		margin: 15px;
+	}
+	.canvas{
+		width: 350px !important;
+		height: 350px !important;
+	}
+	.btn_group_div{
+		margin: 15px;
+	}
+	.my_button{
+		width: 165px !important;
+	}
 }
