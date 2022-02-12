@@ -9,5 +9,5 @@
 ### Demo
 
 <p align="center">
-  <img width="600px" height="100%" src="demo.demo.gif" alt="Demo GIF">
+  <img width="600px" height="100%" src="demo\demo.gif" alt="object-detection-on-image">
 </p>
